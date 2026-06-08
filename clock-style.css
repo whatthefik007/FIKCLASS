@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Kanit:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0e27, #1a1a4a);
+    color: #fff;
+    min-height: 100vh;
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: background 0.3s;
+}
+
+.clock-container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.clock-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.clock-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #00ff88, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+}
+
+.clock-header p {
+    font-size: 18px;
+    color: #00ff88;
+    letter-spacing: 2px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.btn-format,
+.btn-add {
+    padding: 12px 24px;
+    border: 2px solid #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-family: 'Kanit', sans-serif;
+}
+
+.btn-format:hover,
+.btn-add:hover {
+    background: rgba(0, 255, 136, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-format:active,
+.btn-add:active {
+    transform: translateY(0);
+}
+
+.clocks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.clock-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 255, 136, 0.3);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.clock-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), transparent);
+    pointer-events: none;
+}
+
+.clock-card:hover {
+    border-color: rgba(0, 255, 136, 0.6);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), inset 0 0 30px rgba(0, 255, 136, 0.05);
+    transform: translateY(-5px);
+}
+
+.timezone-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #00ff88;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.timezone-region {
+    font-size: 14px;
+    color: #00d4ff;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.digital-time {
+    font-family: 'Orbitron', monospace;
+    font-size: 52px;
+    font-weight: 700;
+    color: #00ff88;
+    margin: 20px 0;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.digital-date {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.timezone-offset {
+    font-size: 13px;
+    color: #00d4ff;
+    padding: 10px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.btn-remove {
+    padding: 8px 16px;
+    background: rgba(255, 77, 77, 0.2);
+    border: 1px solid #ff4d4d;
+    color: #ff4d4d;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.btn-remove:hover {
+    background: rgba(255, 77, 77, 0.4);
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #0a0e27, #1a1a4a);
+    border: 2px solid rgba(0, 255, 136, 0.5);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-size: 24px;
+    color: #00ff88;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #00ff88;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.timezone-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.timezone-item {
+    padding: 12px 16px;
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 15px;
+    color: #00d4ff;
+}
+
+.timezone-item:hover {
+    background: rgba(0, 255, 136, 0.15);
+    border-color: rgba(0, 255, 136, 0.6);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+    transform: translateX(5px);
+}
+
+.timezone-item.selected {
+    background: rgba(0, 255, 136, 0.2);
+    border-color: rgba(0, 255, 136, 0.8);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Scrollbar Styling */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 136, 0.3);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 136, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .clock-header h1 {
+        font-size: 36px;
+    }
+
+    .clocks-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .digital-time {
+        font-size: 40px;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+}
