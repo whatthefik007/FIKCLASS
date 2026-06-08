@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FirstClass</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="images/logo.jpg" alt="logo">
+            <h2>FirstClass</h2>
+        </div>
+        <ul>
+            <li onclick="switchPage('dashboard')">🏠 Dashboard</li>
+            <li>👨‍🎓 นักเรียน</li>
+            <li>✅ เช็คชื่อ</li>
+            <li>⚖️ สุขภาพ</li>
+            <li onclick="switchPage('savings')">💰 ออมเงิน</li>
+            <li onclick="switchPage('scores')">📝 คะแนน</li>
+            <li>📚 งานที่มอบหมาย</li>
+            <li>📊 รายงาน</li>
+            <li>⚙️ ตั้งค่า</li>
+        </ul>
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+            <div>
+                <h1>🏫 FirstClass</h1>
+                <p>โรงเรียนสุเหร่าบางกะสี</p>
+            </div>
+            <button id="darkBtn">🌙 Dark Mode</button>
+        </div>
+
+        <div id="page-dashboard" class="tab-content active-tab">
+            <section class="cards">
+                <div class="card">
+                    <h2 id="totalStudents">0</h2>
+                    <p>นักเรียนทั้งหมด</p>
+                </div>
+                <div class="card">
+                    <h2 id="todayPresent">0</h2>
+                    <p>มาเรียนวันนี้</p>
+                </div>
+                <div class="card">
+                    <h2 id="avgScore">0</h2>
+                    <p>คะแนนเฉลี่ย</p>
+                </div>
+                <div class="card">
+                    <h2 id="totalSavings">0</h2>
+                    <p>ยอดออมรวม</p>
+                </div>
+            </section>
+
+            <section class="table-box">
+                <div class="table-header">
+                    <h2>รายชื่อนักเรียน</h2>
+                    <button class="add-btn" onclick="toggleStudentForm()">➕ เพิ่มนักเรียน</button>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="ค้นหาชื่อนักเรียน..." onkeyup="showStudents()" />
+                </div>
+                
+                <div class="student-form" id="studentForm" style="display: none;">
+                    <input type="number" id="studentNo" placeholder="เลขที่">
+                    <input type="text" id="studentName" placeholder="ชื่อนักเรียน">
+                    <input type="text" id="studentRoom" placeholder="ห้อง">
+                    <select id="studentGender">
+                        <option value="ชาย">ชาย</option>
+                        <option value="หญิง">หญิง</option>
+                    </select>
+                    <input type="number" id="studentScore" placeholder="คะแนนเก็บ">
+                    <input type="number" id="studentSavings" placeholder="เงินออม (บาท)">
+                    <div class="form-buttons">
+                        <button class="save-btn" onclick="addStudent()">💾 บันทึก</button>
+                        <button class="cancel-btn" onclick="toggleStudentForm()">ยกเลิก</button>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>เลขที่</th>
+                            <th>ชื่อ</th>
+                            <th>ห้อง</th>
+                            <th>เพศ</th>
+                            <th>สถานะ</th>
+                            <th>จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTable">
+                    </tbody>
+                </table>
+            </section>
+        </div>
+       <div id="page-savings" class="tab-content">
+            <section class="table-box">
+                <h2>💰 ระบบสรุปยอดออมเงินประจำห้องเรียน</h2>
+                <p style="margin-top: 15px; color: #cbd5e1; font-size: 16px;">
+                    ส่วนนี้จะเป็นหน้าต่างจัดการเงินออมของนักเรียนแยกออกมาต่างหาก (โรงเรียนสุเหร่าบางกะสี)
+                </p>
+            </section>
+        </div>
+
+        <div id="page-scores" class="tab-content">
+            <section class="table-box">
+                <h2>🏆 ระบบบันทึกคะแนนเก็บและพฤติกรรม</h2>
+                <p style="margin-top: 15px; color: #cbd5e1; font-size: 16px;">
+                    ส่วนนี้จะเป็นหน้าต่างกรอกคะแนนและดูสถิติคะแนนแยกออกมาต่างหาก (โรงเรียนสุเหร่าบางกะสี)
+                </p>
+            </section>
+        </div>
+
+    </main>
+</div>
+
+<div class="modal" id="editModal" onclick="closeEditModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2>✏️ แก้ไขข้อมูลนักเรียน</h2>
+            <button class="close-modal" onclick="closeEditModal()">✕</button>
+        </div>
+        <input type="hidden" id="editIndex">
+        <input type="text" id="editNo" placeholder="เลขที่">
+        <input type="text" id="editName" placeholder="ชื่อนักเรียน">
+        <input type="text" id="editRoom" placeholder="ห้อง">
+        <select id="editGender">
+            <option value="ชาย">ชาย</option>
+            <option value="หญิง">หญิง</option>
+        </select>
+        <input type="number" id="editScore" placeholder="คะแนนเก็บ">
+        <input type="number" id="editSavings" placeholder="เงินออม (บาท)">
+        <div class="modal-actions">
+            <button class="cancel-btn" onclick="closeEditModal()">ยกเลิก</button>
+            <button class="save-btn" onclick="saveEditStudent()">บันทึก</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="deleteModal" onclick="closeDeleteModal()">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2>⚠️ ยืนยันการลบ</h2>
+            <button class="close-modal" onclick="closeDeleteModal()">×</button>
+        </div>
+        <p class="delete-text">คุณต้องการลบข้อมูลของ <strong id="deleteStudentName"></strong> หรือไม่?</p>
+        <input type="hidden" id="deleteIndex">
+        <div class="modal-actions">
+            <button class="cancel-btn" onclick="closeDeleteModal()">ยกเลิก</button>
+            <button class="delete-btn" onclick="confirmDeleteStudent()">ลบข้อมูล</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
