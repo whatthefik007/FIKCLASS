@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Pro - All-in-One Management System</title>
+    <link rel="stylesheet" href="home-style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <span class="logo-icon">🎓</span>
+            <span class="logo-text">Class Pro</span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#home" onclick="scrollTo('home')">🏠 Home</a></li>
+            <li><a href="#features" onclick="scrollTo('features')">✨ Features</a></li>
+            <li><a href="#apps" onclick="scrollTo('apps')">📱 Apps</a></li>
+            <li><a href="#stats" onclick="scrollTo('stats')">📊 Statistics</a></li>
+            <li><a href="#footer" onclick="scrollTo('footer')">📞 Contact</a></li>
+        </ul>
+        <div class="nav-controls">
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1 class="hero-title">Class Pro 🎓</h1>
+        <p class="hero-subtitle">All-in-One Management System</p>
+        <p class="hero-description">ระบบจัดการทั้งหมดสำหรับโรงเรียน • Manage Everything for Schools</p>
+        <div class="hero-buttons">
+            <a href="index.html" class="btn btn-primary">🎯 FikClass ระบบจัดการนักเรียน</a>
+            <a href="clock.html" class="btn btn-secondary">🕐 Digital Clock นาฬิกาดิจิทัล</a>
+            <a href="weather.html" class="btn btn-tertiary">🌤️ Weather Dashboard อากาศ</a>
+        </div>
+    </div>
+    <div class="hero-gradient"></div>
+</section>
+
+<!-- Features Section -->
+<section class="features" id="features">
+    <div class="container">
+        <h2 class="section-title">✨ Features & Highlights</h2>
+        <p class="section-subtitle">ฟีเจอร์หลักของ Class Pro</p>
+        
+        <div class="features-grid">
+            <!-- FikClass Features -->
+            <div class="feature-card gradient-1">
+                <div class="feature-icon">👨‍🎓</div>
+                <h3>FikClass</h3>
+                <p class="feature-title">Student Management</p>
+                <ul class="feature-list">
+                    <li>✅ จัดการข้อมูลนักเรียน</li>
+                    <li>✅ บันทึกการเข้าเรียน</li>
+                    <li>✅ ติดตามคะแนน</li>
+                    <li>✅ ระบบออมเงิน</li>
+                </ul>
+            </div>
+
+            <!-- Clock Features -->
+            <div class="feature-card gradient-2">
+                <div class="feature-icon">🕐</div>
+                <h3>Digital Clock</h3>
+                <p class="feature-title">Time Zone Display</p>
+                <ul class="feature-list">
+                    <li>✅ 20+ เขตเวลา</li>
+                    <li>✅ 12/24 ชั่วโมง</li>
+                    <li>✅ Neon Design</li>
+                    <li>✅ Real-time Update</li>
+                </ul>
+            </div>
+
+            <!-- Weather Features -->
+            <div class="feature-card gradient-3">
+                <div class="feature-icon">🌤️</div>
+                <h3>Weather Dashboard</h3>
+                <p class="feature-title">Real-time Weather</p>
+                <ul class="feature-list">
+                    <li>✅ ข้อมูลอากาศ Live</li>
+                    <li>✅ 5-day Forecast</li>
+                    <li>✅ 20+ เมือง</li>
+                    <li>✅ Favorites System</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Apps Section -->
+<section class="apps" id="apps">
+    <div class="container">
+        <h2 class="section-title">📱 Applications</h2>
+        <p class="section-subtitle">แอปพลิเคชันที่พร้อมใช้งาน</p>
+        
+        <div class="apps-grid">
+            <div class="app-card">
+                <div class="app-header gradient-1">
+                    <span class="app-icon">🎓</span>
+                </div>
+                <div class="app-content">
+                    <h3>FikClass</h3>
+                    <p>ระบบจัดการนักเรียนครบครัน</p>
+                    <div class="app-features">
+                        <span class="badge">Student</span>
+                        <span class="badge">Attendance</span>
+                        <span class="badge">Scores</span>
+                    </div>
+                    <a href="index.html" class="app-btn">เปิดแอป →</a>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <div class="app-header gradient-2">
+                    <span class="app-icon">🕐</span>
+                </div>
+                <div class="app-content">
+                    <h3>Digital Clock</h3>
+                    <p>นาฬิกาดิจิทัลแบบนีออน</p>
+                    <div class="app-features">
+                        <span class="badge">Time Zones</span>
+                        <span class="badge">Live</span>
+                        <span class="badge">24/7</span>
+                    </div>
+                    <a href="clock.html" class="app-btn">เปิดแอป →</a>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <div class="app-header gradient-3">
+                    <span class="app-icon">🌤️</span>
+                </div>
+                <div class="app-content">
+                    <h3>Weather Dashboard</h3>
+                    <p>ข้อมูลอากาศแบบเรียลไทม์</p>
+                    <div class="app-features">
+                        <span class="badge">Live Data</span>
+                        <span class="badge">Forecast</span>
+                        <span class="badge">Global</span>
+                    </div>
+                    <a href="weather.html" class="app-btn">เปิดแอป →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="statistics" id="stats">
+    <div class="container">
+        <h2 class="section-title">📊 Statistics</h2>
+        <p class="section-subtitle">สถิติการใช้งาน Class Pro</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number" data-target="500">0</div>
+                <div class="stat-label">Active Users</div>
+                <div class="stat-thai">ผู้ใช้งานทั้งหมด</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏫</div>
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">Schools</div>
+                <div class="stat-thai">โรงเรียนที่ใช้</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👨‍🎓</div>
+                <div class="stat-number" data-target="10000">0</div>
+                <div class="stat-label">Students</div>
+                <div class="stat-thai">นักเรียนในระบบ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🌍</div>
+                <div class="stat-number" data-target="20">0</div>
+                <div class="stat-label">Time Zones</div>
+                <div class="stat-thai">เขตเวลาที่ครอบคลุม</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📱</div>
+                <div class="stat-number" data-target="3">0</div>
+                <div class="stat-label">Apps</div>
+                <div class="stat-thai">แอปพลิเคชัน</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-number" data-target="100">0</div>
+                <div class="stat-label">Satisfaction %</div>
+                <div class="stat-thai">ความพึงพอใจ</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>🎓 Class Pro</h3>
+                <p>All-in-One Management System for Schools</p>
+                <p>ระบบจัดการทั้งหมดสำหรับโรงเรียน</p>
+            </div>
+            <div class="footer-section">
+                <h4>📱 Apps</h4>
+                <ul>
+                    <li><a href="index.html">🎯 FikClass</a></li>
+                    <li><a href="clock.html">🕐 Digital Clock</a></li>
+                    <li><a href="weather.html">🌤️ Weather</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>🔗 Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#stats">Statistics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📞 Contact</h4>
+                <ul>
+                    <li>📧 <a href="mailto:info@classpro.com">info@classpro.com</a></li>
+                    <li>🌐 <a href="https://github.com/whatthefik007/fikclass" target="_blank">GitHub</a></li>
+                    <li>💬 Support Available</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Class Pro. All Rights Reserved.</p>
+            <p>Created with 💜 by whatthefik007</p>
+        </div>
+    </div>
+</footer>
+
+<script src="home-script.js"></script>
+</body>
+</html>
