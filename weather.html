@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="weather-style.css">
+</head>
+<body>
+
+<div class="weather-container">
+    <!-- Header -->
+    <div class="weather-header">
+        <h1>🌦️ Weather Dashboard</h1>
+        <p>Real-time Weather Information</p>
+    </div>
+
+    <!-- Search & Controls -->
+    <div class="search-controls">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search city name..." />
+            <button onclick="searchWeather()" class="btn-search">🔍 Search</button>
+        </div>
+        <div class="unit-toggle">
+            <button onclick="toggleUnit('C')" class="unit-btn active" id="btnCelsius">°C Celsius</button>
+            <button onclick="toggleUnit('F')" class="unit-btn" id="btnFahrenheit">°F Fahrenheit</button>
+        </div>
+    </div>
+
+    <!-- Current Weather -->
+    <div class="current-weather" id="currentWeather">
+        <!-- Will be populated by JavaScript -->
+    </div>
+
+    <!-- Favorites Section -->
+    <div class="favorites-section">
+        <div class="favorites-header">
+            <h2>⭐ Favorite Cities</h2>
+            <button onclick="showAddFavorite()" class="btn-add-favorite">+ Add City</button>
+        </div>
+        <div class="favorites-grid" id="favoritesGrid">
+            <!-- Favorite cities will be displayed here -->
+        </div>
+    </div>
+
+    <!-- 5-Day Forecast -->
+    <div class="forecast-section">
+        <h2>📅 5-Day Forecast</h2>
+        <div class="forecast-grid" id="forecastGrid">
+            <!-- Forecast will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Weather Details -->
+    <div class="details-section">
+        <h2>📊 Weather Details</h2>
+        <div class="details-grid" id="detailsGrid">
+            <!-- Details will be populated by JavaScript -->
+        </div>
+    </div>
+</div>
+
+<!-- Add Favorite Modal -->
+<div class="modal" id="addFavoriteModal" onclick="closeAddFavorite()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2>⭐ Add to Favorites</h2>
+            <button class="close-btn" onclick="closeAddFavorite()">×</button>
+        </div>
+        <input type="text" id="favoriteCityInput" placeholder="Enter city name..." />
+        <div class="modal-actions">
+            <button onclick="closeAddFavorite()" class="btn-cancel">Cancel</button>
+            <button onclick="addFavoriteCity()" class="btn-confirm">Add</button>
+        </div>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div class="modal" id="errorModal" onclick="closeErrorModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2>⚠️ Error</h2>
+            <button class="close-btn" onclick="closeErrorModal()">×</button>
+        </div>
+        <p id="errorMessage"></p>
+        <button onclick="closeErrorModal()" class="btn-confirm">Close</button>
+    </div>
+</div>
+
+<!-- Loading Spinner -->
+<div class="loading" id="loadingSpinner">
+    <div class="spinner"></div>
+    <p>Loading weather data...</p>
+</div>
+
+<script src="weather-script.js"></script>
+</body>
+</html>
